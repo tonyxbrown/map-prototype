@@ -1,0 +1,619 @@
+<html>
+
+	<head>
+
+		<title>Map PROTOTYPE</title>
+		<meta name="viewport" content="initial-scale=1.0">
+		<meta charset="utf-8">
+		<style>
+	      html, body {
+	        height: 100%;
+	        margin: 0;
+	        padding: 0;
+	        background-color: #ffffff;
+	      }
+	      #map {
+	        height: 100%;
+	        background-color: #ffffff !important;
+	      }
+	      #logo {
+	      	position: absolute;
+	      	top: 15px;
+	      	left: 25px;
+	      	width: 83px;
+	      	height: 20px;
+	      	background-image: url(logo.png);
+	      	background-size: contain;
+	      	background-repeat: no-repeat;
+	      }
+
+
+			.sky {
+			  height: 480px;
+			  background: #007fd5;
+			  position: relative;
+			  
+			  position: absolute;
+			  width: 100%;
+			  height: 100%;
+			  z-index: 1000;
+			  background: transparent;
+			  pointer-events: none;
+
+			  overflow: hidden;
+/*			  -webkit-animation: sky_background 50s ease-out infinite;
+			  -moz-animation: sky_background 50s ease-out infinite;
+			  -o-animation: sky_background 50s ease-out infinite;*/
+			  -webkit-transform: translate3d(0, 0, 0);
+			  -moz-transform: translate3d(0, 0, 0);
+			  -o-transform: translate3d(0, 0, 0)
+			}
+
+			.moon {
+			  background: url("http://montanaflynn.me/lab/css-clouds/images/moon.png");
+			  position: absolute;
+			  left: 0;
+			  height: 100%;
+			  width: 300%;
+			  -webkit-animation: moon 50s linear infinite;
+			  -moz-animation: moon 50s linear infinite;
+			  -o-animation: moon 50s linear infinite;
+			  -webkit-transform: translate3d(0, 0, 0);
+			  -moz-transform: translate3d(0, 0, 0);
+			  -o-transform: translate3d(0, 0, 0)
+			}
+
+			.clouds_one {
+			  background: url("http://montanaflynn.me/lab/css-clouds/images/cloud_one.png");
+			  position: absolute;
+			  left: 0;
+			  top: 0;
+			  height: 100%;
+			  width: 300%;
+			  -webkit-animation: cloud_one 50s linear infinite;
+			  -moz-animation: cloud_one 50s linear infinite;
+			  -o-animation: cloud_one 50s linear infinite;
+			  -webkit-transform: translate3d(0, 0, 0);
+			  -moz-transform: translate3d(0, 0, 0);
+			  -o-transform: translate3d(0, 0, 0)
+			}
+
+			.clouds_two {
+			  background: url("http://montanaflynn.me/lab/css-clouds/images/cloud_two.png");
+			  position: absolute;
+			  left: 0;
+			  top: 0;
+			  height: 100%;
+			  width: 300%;
+			  -webkit-animation: cloud_two 75s linear infinite;
+			  -moz-animation: cloud_two 75s linear infinite;
+			  -o-animation: cloud_two 75s linear infinite;
+			  -webkit-transform: translate3d(0, 0, 0);
+			  -moz-transform: translate3d(0, 0, 0);
+			  -o-transform: translate3d(0, 0, 0)
+			}
+
+			.clouds_three {
+			  background: url("http://montanaflynn.me/lab/css-clouds/images/cloud_three.png");
+			  position: absolute;
+			  left: 0;
+			  top: 0;
+			  height: 100%;
+			  width: 300%;
+			  -webkit-animation: cloud_three 100s linear infinite;
+			  -moz-animation: cloud_three 100s linear infinite;
+			  -o-animation: cloud_three 100s linear infinite;
+			  -webkit-transform: translate3d(0, 0, 0);
+			  -moz-transform: translate3d(0, 0, 0);
+			  -o-transform: translate3d(0, 0, 0)
+			}
+
+			@-webkit-keyframes sky_background {
+			  0% {
+			    background: #007fd5;
+			    color: #007fd5
+			  }
+			  50% {
+			    background: #000;
+			    color: #a3d9ff
+			  }
+			  100% {
+			    background: #007fd5;
+			    color: #007fd5
+			  }
+			}
+
+			@-webkit-keyframes moon {
+			  0% {
+			    opacity: 0;
+			    left: -200% -moz-transform: scale(0.5);
+			    -webkit-transform: scale(0.5);
+			  }
+			  50% {
+			    opacity: 1;
+			    -moz-transform: scale(1);
+			    left: 0% bottom: 250px;
+			    -webkit-transform: scale(1);
+			  }
+			  100% {
+			    opacity: 0;
+			    bottom: 500px;
+			    -moz-transform: scale(0.5);
+			    -webkit-transform: scale(0.5);
+			  }
+			}
+
+			@-webkit-keyframes cloud_one {
+			  0% {
+			    left: 0
+			  }
+			  100% {
+			    left: -200%
+			  }
+			}
+
+			@-webkit-keyframes cloud_two {
+			  0% {
+			    left: 0
+			  }
+			  100% {
+			    left: -200%
+			  }
+			}
+
+			@-webkit-keyframes cloud_three {
+			  0% {
+			    left: 0
+			  }
+			  100% {
+			    left: -200%
+			  }
+			}
+
+			@-moz-keyframes sky_background {
+			  0% {
+			    background: #007fd5;
+			    color: #007fd5
+			  }
+			  50% {
+			    background: #000;
+			    color: #a3d9ff
+			  }
+			  100% {
+			    background: #007fd5;
+			    color: #007fd5
+			  }
+			}
+
+			@-moz-keyframes moon {
+			  0% {
+			    opacity: 0;
+			    left: -200% -moz-transform: scale(0.5);
+			    -webkit-transform: scale(0.5);
+			  }
+			  50% {
+			    opacity: 1;
+			    -moz-transform: scale(1);
+			    left: 0% bottom: 250px;
+			    -webkit-transform: scale(1);
+			  }
+			  100% {
+			    opacity: 0;
+			    bottom: 500px;
+			    -moz-transform: scale(0.5);
+			    -webkit-transform: scale(0.5);
+			  }
+			}
+
+			@-moz-keyframes cloud_one {
+			  0% {
+			    left: 0
+			  }
+			  100% {
+			    left: -200%
+			  }
+			}
+
+			@-moz-keyframes cloud_two {
+			  0% {
+			    left: 0
+			  }
+			  100% {
+			    left: -200%
+			  }
+			}
+
+			@-moz-keyframes cloud_three {
+			  0% {
+			    left: 0
+			  }
+			  100% {
+			    left: -200%
+			  }
+			}
+	    </style>
+
+	</head>
+
+	<body>
+	  <div class="sky">
+<!-- 	    <div class="moon"></div> -->
+	    <div class="clouds_one"></div>
+	    <div class="clouds_two"></div>
+	    <div class="clouds_three"></div>
+	  </div>
+
+		<div id="map"></div>
+		<div id="logo"></div>
+
+		<script>
+			var stylesArray = [
+    {
+        "featureType": "all",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            },
+            {
+                //"hue": "#bc64ff"
+                "hue": "#ffffff"
+            },
+            {
+                "saturation": "0"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#e8b8f9"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative.country",
+        "elementType": "labels",
+        "stylers": [
+            {
+                //"color": "#ff0000",
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative.land_parcel",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "all",
+        "stylers": [
+            {
+                //"color": "#3e114e"
+                "color": "#9750cd"
+            },
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            },
+            {
+                "color": "#a02aca"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape.natural",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            },
+            {
+                //"color": "#2e093b"
+                "color": "#bc64ff"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape.natural",
+        "elementType": "labels.text",
+        "stylers": [
+            {
+                "color": "#9e1010"
+            },
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape.natural",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#ff0000"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape.natural.landcover",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            },
+            {
+                "color": "#58176e"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape.natural.landcover",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.business",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "all",
+        "stylers": [
+            {
+                "saturation": -100
+            },
+            {
+                "lightness": 45
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            },
+            {
+                "color": "#a02aca"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#d180ee"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            },
+            {
+                "color": "#a02aca"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            },
+            {
+                "color": "#ff0000"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "labels.text",
+        "stylers": [
+            {
+                "color": "#a02aca"
+            },
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#cc81e7"
+            },
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            },
+            {
+                "hue": "#bc00ff"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#6d2388"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#c46ce3"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            },
+            {
+                "visibility": "on"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            },
+            {
+                "color": "#a02aca"
+            }
+        ]
+    }
+];
+
+	      var map;
+	      function initMap() {
+	        map = new google.maps.Map(document.getElementById('map'), {
+	          //center: {lat: 36.1125477, lng: -115.1764104},
+	          center: {lat: 0, lng: 0},
+	          zoom: 2,
+	          disableDefaultUI: true
+	        });
+	        map.setOptions({styles: stylesArray});
+	      }
+		</script>
+
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBI9D9OWOTBwqHLAjY18hcqbhrk7FC0By0&callback=initMap"
+	  		type="text/javascript"></script>
+
+	</body>
+
+</html>
